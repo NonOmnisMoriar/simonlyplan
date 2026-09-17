@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Frankie &amp; Hunter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #fdf3dd;
+      --card-blue: #d6e8f7;
+      --card-lilac: #caaacd;
+      --card-gold: #cb962e;
+      --card-orange: #ef601e;
+      --text-dark: #373d3b;
+      --text-black: #111111;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: rgba(55, 61, 59, 0.08);
+    }
+
+    .bag-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    .bag-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .bag-count {
+      min-width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--card-orange);
+      color: #ffffff;
+      font-size: 0.78rem;
+      line-height: 1;
+    }
+
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .catalog-hero {
+      background: linear-gradient(135deg, var(--card-blue) 0%, #ffffff 54%, var(--card-lilac) 100%);
+      border-radius: var(--radius-lg);
+      padding: 54px 48px;
+      margin-bottom: 28px;
+      min-height: 260px;
+      display: grid;
+      align-items: end;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .catalog-hero h1 {
+      max-width: 760px;
+      color: var(--text-black);
+      font-size: clamp(2.2rem, 6vw, 4.7rem);
+      line-height: 1.02;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .catalog-hero p {
+      max-width: 710px;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .toolbar {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .toolbar-top {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) minmax(190px, auto) auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box svg {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(55, 61, 59, 0.58);
+      pointer-events: none;
+    }
+
+    #product-search,
+    #sort-select {
+      width: 100%;
+      border: 1px solid rgba(55, 61, 59, 0.18);
+      border-radius: 999px;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      min-height: 46px;
+      outline: none;
+    }
+
+    #product-search {
+      padding: 0 18px 0 46px;
+    }
+
+    #sort-select {
+      padding: 0 38px 0 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #product-search:focus,
+    #sort-select:focus {
+      border-color: var(--card-orange);
+      box-shadow: 0 0 0 3px rgba(239, 96, 30, 0.14);
+    }
+
+    .result-count {
+      font-weight: 800;
+      color: var(--text-black);
+      white-space: nowrap;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      border: 0;
+      border-radius: 999px;
+      background: rgba(55, 61, 59, 0.08);
+      color: var(--text-dark);
+      padding: 9px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .filter-pill:hover {
+      transform: translateY(-1px);
+    }
+
+    .filter-pill.active {
+      background: var(--text-dark);
+      color: #ffffff;
+    }
+
+    #product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: var(--card-blue);
+      overflow: hidden;
+    }
+
+    .image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .product-card:hover .image-wrap img {
+      transform: scale(1.05);
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      max-width: calc(100% - 28px);
+      background: rgba(253, 243, 221, 0.94);
+      color: var(--text-black);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #27623a;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .stock-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #2f9e44;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .stars {
+      color: var(--card-gold);
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .product-card h3 {
+      color: var(--text-black);
+      font-size: 1.15rem;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .product-card p {
+      color: #525856;
+      font-size: 0.94rem;
+      flex: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag-chip {
+      border-radius: 999px;
+      background: rgba(202, 170, 205, 0.24);
+      color: var(--text-dark);
+      padding: 5px 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .price {
+      color: var(--text-black);
+      font-size: 1.35rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .add-to-bag {
+      border: 0;
+      background: var(--text-dark);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .add-to-bag:hover {
+      background: var(--text-black);
+      transform: translateY(-1px);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 36px 24px;
+      text-align: center;
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      background: var(--text-dark);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      max-width: min(340px, calc(100vw - 40px));
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+      transform: translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      font-weight: 700;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      border-top: 1px solid rgba(55, 61, 59, 0.15);
+      padding: 40px 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 860px) {
+      .toolbar-top {
+        grid-template-columns: 1fr;
+      }
+
+      .result-count {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-nav {
+        padding: 20px 16px;
+      }
+
+      .brand-logo {
+        font-size: 1.05rem;
+        letter-spacing: 0.18em;
+      }
+
+      .nav-actions,
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+        padding: 7px 10px;
+      }
+
+      .page-wrap {
+        padding: 18px 14px 64px;
+      }
+
+      .catalog-hero {
+        padding: 34px 22px;
+        min-height: 230px;
+      }
+
+      .catalog-hero p {
+        font-size: 1rem;
+      }
+
+      .toolbar {
+        padding: 16px;
+      }
+
+      #product-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .card-bottom {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .add-to-bag {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="index.html" class="brand-logo">Frankie &amp; Hunter</a>
+    <div class="nav-actions">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Shop</a></li>
+          <li><a href="subscription.html">Subscription</a></li>
+          <li><a href="build-a-box.html">Build a Box</a></li>
+          <li><a href="mystery-box.html">Mystery Box</a></li>
+          <li><a href="seasonal.html">Seasonal</a></li>
+          <li><a href="sip-and-craft.html">Sip &amp; Craft</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </nav>
+      <a href="#product-grid" class="bag-link" aria-label="Shopping bag">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span>Bag</span>
+        <span class="bag-count" id="bag-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="catalog-hero">
+      <div>
+        <h1>Pocket Crafts, Minis &amp; Sensory Treasures</h1>
+        <p>Handpicked tokens, party favors, and sensory play companions to add to your custom craft boxes.</p>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Product controls">
+      <div class="toolbar-top">
+        <label class="search-box" for="product-search">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input id="product-search" type="search" placeholder="Search products, tags, or descriptions" autocomplete="off">
+        </label>
+        <label for="sort-select">
+          <select id="sort-select">
+            <option value="featured">Featured / Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating-desc">Highest Rated</option>
+          </select>
+        </label>
+        <div class="result-count" id="result-count" aria-live="polite">Showing 0 products</div>
+      </div>
+      <div class="category-pills" id="category-pills" aria-label="Filter by category"></div>
+    </section>
+
+    <section id="product-grid" aria-live="polite"></section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <p>&copy; 2026 Frankie &amp; Hunter. Handcrafted memories and creative sanctuaries.</p>
+    <p style="margin-top: 8px;">
+      <a href="index.html">Home</a> |
+      <a href="products.html">Shop</a> |
+      <a href="subscription.html">Subscriptions</a> |
+      <a href="build-a-box.html">Custom Boxes</a> |
+      <a href="mystery-box.html">Mystery</a> |
+      <a href="seasonal.html">Seasonal</a> |
+      <a href="sip-and-craft.html">Sip &amp; Craft</a> |
+      <a href="events.html">Events</a>
+    </p>
+  </footer>
+
+  <script>
+    const categories = [
+      'All',
+      'Party Favors & Minis',
+      'Collectibles & Charms',
+      'Fidget & Sensory',
+      'Creative Play',
+      'Sensory & Calming',
+      'Active & Novelty',
+      'Keyrings & Travel',
+      'Classic Toys'
+    ];
+
+    const state = {
+      products: [],
+      category: 'All',
+      search: '',
+      sort: 'featured',
+      bagCount: 0,
+      toastTimer: null
+    };
+
+    const grid = document.getElementById('product-grid');
+    const searchInput = document.getElementById('product-search');
+    const sortSelect = document.getElementById('sort-select');
+    const countEl = document.getElementById('result-count');
+    const bagCountEl = document.getElementById('bag-count');
+    const toast = document.getElementById('toast');
+    const categoryPills = document.getElementById('category-pills');
+
+    const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640'%3E%3Crect width='640' height='640' fill='%23d6e8f7'/%3E%3Ccircle cx='460' cy='170' r='72' fill='%23fdf3dd'/%3E%3Cpath d='M90 495c55-104 113-156 174-156 42 0 79 25 111 76 34-37 70-56 108-56 37 0 71 24 102 72v64H90Z' fill='%23caaacd'/%3E%3Ctext x='320' y='558' text-anchor='middle' font-family='Arial, sans-serif' font-size='28' font-weight='700' fill='%23373d3b'%3EImage coming soon%3C/text%3E%3C/svg%3E";
+
+    function money(product) {
+      return `${product.symbol}${product.price.toFixed(2)}`;
+    }
+
+    function matchesProduct(product) {
+      const term = state.search.trim().toLowerCase();
+      const inCategory = state.category === 'All' || product.category === state.category;
+      if (!term) return inCategory;
+
+      const haystack = [
+        product.name,
+        product.shortDescription,
+        ...product.tags
+      ].join(' ').toLowerCase();
+
+      return inCategory && haystack.includes(term);
+    }
+
+    function sortedProducts(products) {
+      const output = [...products];
+      if (state.sort === 'price-asc') {
+        output.sort((a, b) => a.price - b.price);
+      } else if (state.sort === 'price-desc') {
+        output.sort((a, b) => b.price - a.price);
+      } else if (state.sort === 'rating-desc') {
+        output.sort((a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount);
+      }
+      return output;
+    }
+
+    function renderCategoryPills() {
+      categoryPills.innerHTML = categories.map((category) => `
+        <button class="filter-pill${category === state.category ? ' active' : ''}" type="button" data-category="${category}">
+          ${category}
+        </button>
+      `).join('');
+    }
+
+    function renderProducts() {
+      const visible = sortedProducts(state.products.filter(matchesProduct));
+      countEl.textContent = `Showing ${visible.length} ${visible.length === 1 ? 'product' : 'products'}`;
+
+      if (!visible.length) {
+        grid.innerHTML = '<div class="empty-state">No products match those filters yet.</div>';
+        return;
+      }
+
+      grid.innerHTML = visible.map((product) => `
+        <article class="product-card">
+          <div class="image-wrap">
+            <img src="${product.heroImage}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';">
+            <span class="category-badge">${product.category}</span>
+          </div>
+          <div class="card-body">
+            <span class="stock-badge">${product.inStock ? 'In Stock' : 'Out of Stock'}</span>
+            <div class="rating-row">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span>${product.rating.toFixed(1)} (${product.reviewCount})</span>
+            </div>
+            <h3>${product.name}</h3>
+            <p>${product.shortDescription}</p>
+            <div class="tag-row">
+              ${product.tags.map((tag) => `<span class="tag-chip">#${tag}</span>`).join('')}
+            </div>
+            <div class="card-bottom">
+              <div class="price">${money(product)}</div>
+              <button class="add-to-bag" type="button" data-product-id="${product.id}">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function updateView() {
+      renderCategoryPills();
+      renderProducts();
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(state.toastTimer);
+      state.toastTimer = window.setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    categoryPills.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-category]');
+      if (!button) return;
+      state.category = button.dataset.category;
+      updateView();
+    });
+
+    searchInput.addEventListener('input', (event) => {
+      state.search = event.target.value;
+      renderProducts();
+    });
+
+    sortSelect.addEventListener('change', (event) => {
+      state.sort = event.target.value;
+      renderProducts();
+    });
+
+    grid.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-product-id]');
+      if (!button) return;
+      const product = state.products.find((item) => item.id === button.dataset.productId);
+      if (!product) return;
+      state.bagCount += 1;
+      bagCountEl.textContent = state.bagCount;
+      showToast(`Added ${product.name} to your bag!`);
+    });
+
+    fetch('assets/data/products.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Product data request failed: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((products) => {
+        state.products = products;
+        updateView();
+      })
+      .catch((error) => {
+        console.error(error);
+        grid.innerHTML = '<div class="empty-state">Product data could not be loaded. Please view this page through a local HTTP server or hosted site.</div>';
+        countEl.textContent = 'Showing 0 products';
+        renderCategoryPills();
+      });
+  </script>
+</body>
+</html>
