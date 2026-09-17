@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystery Craft Box | Frankie & Hunter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --bg-cream: #fdf3dd;
+      --card-blue: #d6e8f7;
+      --card-lilac: #caaacd;
+      --card-gold: #cb962e;
+      --card-orange: #ef601e;
+      --text-dark: #373d3b;
+      --text-black: #111111;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Top Navigation */
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: rgba(55, 61, 59, 0.08);
+    }
+
+    /* Page Container */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* Hero Section */
+    .hero-panel {
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      align-items: center;
+      gap: 32px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-copy h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .hero-copy p {
+      font-size: 1.15rem;
+      max-width: 580px;
+      margin-bottom: 24px;
+    }
+
+    .hero-img-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-img-wrap img {
+      max-height: 280px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .btn-action {
+      display: inline-block;
+      background: var(--text-dark);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Content Blocks */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(55, 61, 59, 0.15);
+      padding: 40px 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-panel {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+      }
+      .hero-copy h1 {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="main.html" class="brand-logo">Frankie &amp; Hunter</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="main.html">Home</a></li>
+        <li><a href="subscription.html" >Subscription</a></li>
+        <li><a href="build-a-box.html" >Build a Box</a></li>
+        <li><a href="mystery-box.html" class="active">Mystery Box</a></li>
+        <li><a href="seasonal.html" >Seasonal</a></li>
+        <li><a href="sip-and-craft.html" >Sip &amp; Craft</a></li>
+        <li><a href="events.html" >Events</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+    
+    <section class="hero-panel" style="background: var(--card-orange); color: var(--text-black);">
+      <div class="hero-copy">
+        <h1>The Joy of an Unboxing Surprise</h1>
+        <p>A surprise parcel of exclusive materials, mystery patterns, and limited-run tools. Unseal the box, put on the kettle, and discover a brand-new medium you have not tried before.</p>
+        <a href="mailto:hello@frankieandhunter.co.uk?subject=Inquiry" class="btn-action">Enquire Now</a>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="assets/images/festive_box_balloons.gif" alt="The Joy of an Unboxing Surprise">
+      </div>
+    </section>
+
+    <section class="content-grid">
+      
+      <div class="info-card">
+        <h3>Mystery Technique of the Month</h3>
+        <p>Each edition features a secret technique—from paper marbling to needle felting and botanical casting.</p>
+      </div>
+      <div class="info-card">
+        <h3>Full-Size Secret Supplies</h3>
+        <p>No sample sizes: you get full tubes, specialty papers, and keepsake tools carefully wrapped in tissue.</p>
+      </div>
+      <div class="info-card">
+        <h3>Step-by-Step Illustrated Booklet</h3>
+        <p>Clear, friendly guides written for beginners through to seasoned tabletop makers.</p>
+      </div>
+      <div class="info-card">
+        <h3>Exclusive Maker Community Badge</h3>
+        <p>Share your unboxing and finished piece with fellow crafters using #FrankieAndHunter.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Frankie &amp; Hunter. Handcrafted memories and creative sanctuaries.</p>
+    <p style="margin-top: 8px;">
+      <a href="main.html">Home</a> | 
+      <a href="subscription.html">Subscriptions</a> | 
+      <a href="build-a-box.html">Custom Boxes</a> | 
+      <a href="mystery-box.html">Mystery</a> | 
+      <a href="seasonal.html">Seasonal</a> | 
+      <a href="sip-and-craft.html">Sip &amp; Craft</a> | 
+      <a href="events.html">Events</a>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frankie &amp; Hunter | Handcrafted Memories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #fdf3dd;
+      --card-blue: #d6e8f7;
+      --card-lilac: #caaacd;
+      --card-gold: #cb962e;
+      --card-orange: #ef601e;
+      --text-dark: #373d3b;
+      --text-black: #111111;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Global Navigation */
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(55, 61, 59, 0.08);
+    }
+
+    /* Continuous Flow Layout */
+    .main-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* Section 1: Offerings & Hero Grid */
+    .offerings-section {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+
+    /* Left Hero Card */
+    .hero-manifesto {
+      background-color: var(--card-blue);
+      border-radius: var(--radius-lg);
+      position: relative;
+      padding: 36px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      min-height: 480px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-manifesto h2 {
+      font-size: 1.95rem;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-black);
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-manifesto h2 span {
+      color: var(--card-gold);
+    }
+
+    .hero-ladybug {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 80px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-woman {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 170px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* 6 Offerings Tiles Grid */
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .tile-card {
+      border-radius: var(--radius-md);
+      position: relative;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      min-height: 230px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .tile-card .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      z-index: 2;
+    }
+
+    .tile-card .artwork {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 90px;
+      max-width: 65%;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    .add-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .add-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Card Palettes */
+    .tile-lilac { background-color: var(--card-lilac); color: #000; }
+    .tile-gold { background-color: var(--card-gold); color: #000; }
+    .tile-orange { background-color: var(--card-orange); color: #000; }
+    .tile-ocean { background: linear-gradient(135deg, #5de0e6 0%, #004aad 100%); color: #d6e8f7; }
+    .tile-flame { background: linear-gradient(135deg, #ff3131 0%, #ff914d 100%); color: #000; }
+    .tile-sunset { background: linear-gradient(135deg, #ff66c4 0%, #ffde59 100%); color: #000; }
+
+    /* Section 2: Our Story (About) */
+    .story-section {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .story-img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+    }
+
+    .story-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 24px;
+      color: var(--text-black);
+    }
+
+    .story-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #373d3b;
+    }
+
+    /* Section 3: Feature Banner */
+    .banner-section {
+      background-color: var(--card-blue);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 48px;
+      gap: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .banner-photo {
+      max-height: 340px;
+      max-width: 45%;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .banner-animation {
+      max-height: 320px;
+      max-width: 45%;
+      object-fit: contain;
+    }
+
+    /* Global Footer */
+    footer {
+      border-top: 1px solid rgba(55, 61, 59, 0.15);
+      padding: 48px 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 960px) {
+      .offerings-section {
+        grid-template-columns: 1fr;
+      }
+      .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .story-section {
+        grid-template-columns: 1fr;
+        padding: 36px 24px;
+      }
+      .story-img {
+        max-height: 320px;
+      }
+      .banner-section {
+        flex-direction: column;
+      }
+      .banner-photo, .banner-animation {
+        max-width: 90%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tiles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-nav">
+    <a href="main.html" class="brand-logo">Frankie &amp; Hunter</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#offerings">Offerings</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="subscription.html">Subscriptions</a></li>
+        <li><a href="build-a-box.html">Build a Box</a></li>
+        <li><a href="mystery-box.html">Mystery</a></li>
+        <li><a href="seasonal.html">Seasonal</a></li>
+        <li><a href="sip-and-craft.html">Sip &amp; Craft</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-wrap">
+
+    <!-- Section 1: Offerings & Hero Grid -->
+    <section class="offerings-section" id="offerings">
+      
+      <div class="hero-manifesto">
+        <img class="hero-ladybug" alt="Ladybug" src="assets/images/ladybug_cutout.png">
+        <img class="hero-woman" alt="Spring fashion adult" src="assets/images/woman_spring_thumb.png">
+        <h2>Here's what we believe in, and how we got here<span>.</span></h2>
+      </div>
+
+      <div class="tiles-grid">
+        
+        <!-- 1. Subscription -->
+        <a href="subscription.html" class="tile-card tile-lilac">
+          <div class="add-btn" style="background:#fdf3dd; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Ladybug" src="assets/images/ladybug_cutout.png">
+          <div class="title">yearly<br>subscription</div>
+        </a>
+
+        <!-- 2. Build Your Own Box -->
+        <a href="build-a-box.html" class="tile-card tile-gold">
+          <div class="add-btn" style="background:#fff4cc; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Balloons" src="assets/images/prom_balloons.png">
+          <div class="title">build your own<br>box</div>
+        </a>
+
+        <!-- 3. Mystery Box -->
+        <a href="mystery-box.html" class="tile-card tile-orange">
+          <div class="add-btn" style="background:#d6e8f7; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Festive mystery box" src="assets/images/festive_box_balloons.gif">
+          <div class="title">Mystery box! 🎁<br>📦 #Mystery #Box</div>
+        </a>
+
+        <!-- 4. Seasonal Celebrations -->
+        <a href="seasonal.html" class="tile-card tile-ocean">
+          <div class="add-btn" style="background:#d6e8f7; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Seasons tree" src="assets/images/tree_four_seasons.png">
+          <div class="title">seasonal<br>celebrations</div>
+        </a>
+
+        <!-- 5. Sip & Craft -->
+        <a href="sip-and-craft.html" class="tile-card tile-flame">
+          <div class="add-btn" style="background:#caaacd; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Adult crafting" src="assets/images/adult_crafting.png">
+          <div class="title">sip and craft</div>
+        </a>
+
+        <!-- 6. Events & Gatherings -->
+        <a href="events.html" class="tile-card tile-sunset">
+          <div class="add-btn" style="background:#ff914d; color:#222;">
+            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
+          </div>
+          <img class="artwork" alt="Group unity hands sticker" src="assets/images/hands_unity_sticker.gif">
+          <div class="title">🎉 #Events<br>#Celebrations<br>#Gatherings</div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Our Story (About) -->
+    <section class="story-section" id="story">
+      <img class="story-img" alt="Adult woman crafting" src="assets/images/woman_spring_portrait.png">
+      <div class="story-text">
+        <h2>Here's what we believe in, and how we got here.</h2>
+        <p>
+          Crafting has always been a cherished part of my life, a passion that I eagerly shared with my children when they were young. In a world increasingly dominated by screens and social media, these creative moments became a sanctuary, a space where we could disconnect from the digital noise and connect with each other on a more personal level. Sitting together at the kitchen table, our hands busy with paper, glue, and paints, we made not just crafts, but memories that I hope they will carry with them forever. I wanted to show them that handmade gifts are more than just objects—they are expressions of love and thoughtfulness, treasures that hold a piece of the giver's heart[cite: 2]. This tradition extended to my grandchildren who now eagerly await sleepovers and parties at Granny's house[cite: 2]. These gatherings are filled with laughter, creativity, and the joy of being together, reminding us all of the simple yet profound value of making and sharing memories[cite: 2].
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Feature Spotlight Banner -->
+    <section class="banner-section">
+      <img class="banner-photo" alt="Frankie &amp; Hunter Branding" src="assets/images/branding_large_photo.jpg">
+      <img class="banner-animation" alt="Festive box with balloons" src="assets/images/festive_box_balloons.gif">
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <p>&copy; 2026 Frankie &amp; Hunter. Handcrafted memories and creative sanctuaries.</p>
+    <p style="margin-top: 8px;">
+      <a href="main.html">Home</a> | 
+      <a href="subscription.html">Subscriptions</a> | 
+      <a href="build-a-box.html">Custom Boxes</a> | 
+      <a href="mystery-box.html">Mystery</a> | 
+      <a href="seasonal.html">Seasonal</a> | 
+      <a href="sip-and-craft.html">Sip &amp; Craft</a> | 
+      <a href="events.html">Events</a>
+    </p>
+  </footer>
+
+</body>
+</html>
