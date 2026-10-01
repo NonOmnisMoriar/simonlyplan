@@ -94,76 +94,200 @@
     /* Hero Section */
     .hero-panel {
       border-radius: var(--radius-lg);
-      padding: 48px;
+      padding: 54px 48px;
       position: relative;
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: center;
       gap: 32px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      background: linear-gradient(135deg, #201a24 0%, #35233f 52%, #ef601e 160%);
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f4b36c;
     }
 
     .hero-copy h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
+      font-size: 3rem;
+      line-height: 1.05;
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      max-width: 620px;
     }
 
     .hero-copy p {
-      font-size: 1.15rem;
-      max-width: 580px;
-      margin-bottom: 24px;
+      font-size: 1.08rem;
+      max-width: 610px;
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-copy .hero-final {
+      margin-bottom: 28px;
+      font-weight: 700;
+      color: #ffffff;
     }
 
     .hero-img-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 280px;
     }
 
     .hero-img-wrap img {
-      max-height: 280px;
+      display: block;
+      width: 100%;
       max-width: 100%;
+      height: auto;
       object-fit: contain;
+      filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.18));
+    }
+
+    .hero-panel > .btn-action {
+      grid-column: 1 / -1;
+      justify-self: center;
     }
 
     .btn-action {
       display: inline-block;
-      background: var(--text-dark);
-      color: #fff;
-      padding: 12px 28px;
+      background: #ffffff;
+      color: #2f2431;
+      padding: 13px 28px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     .btn-action:hover {
       transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto -8px;
+    }
+
+    .section-intro h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .section-intro p {
+      font-size: 1rem;
+      color: #636866;
     }
 
     /* Content Blocks */
     .content-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
     }
 
     .info-card {
-      background: #ffffff;
       border-radius: var(--radius-md);
-      padding: 32px;
+      padding: 30px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      min-height: 180px;
+    }
+
+    .info-card:nth-child(1) { background: var(--card-blue); }
+    .info-card:nth-child(2) { background: #ffffff; }
+    .info-card:nth-child(3) { background: #eadcf0; }
+    .info-card:nth-child(4) { background: #f7d79b; }
+
+    .info-card .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
     }
 
     .info-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .info-card p {
+      font-size: 0.98rem;
+    }
+
+    .host-panel {
+      background: linear-gradient(135deg, #f1a44a 0%, #ef601e 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 42px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      box-shadow: 0 10px 26px rgba(239, 96, 30, 0.16);
+    }
+
+    .host-copy {
+      max-width: 710px;
+    }
+
+    .host-copy h2 {
+      font-size: 2rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .host-copy p {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .host-copy strong {
+      font-size: 1.08rem;
+    }
+
+    .host-panel .btn-action {
+      white-space: nowrap;
+      background: #2f2431;
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .closing-line {
+      text-align: center;
+      padding: 4px 20px 8px;
+    }
+
+    .closing-line p {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .closing-line span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #6f7471;
     }
 
     /* Footer */
@@ -188,7 +312,25 @@
         padding: 32px 24px;
       }
       .hero-copy h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+
+      .hero-img-wrap {
+        min-height: auto;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .host-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 34px 26px;
+      }
+
+      .host-copy h2 {
+        font-size: 1.7rem;
       }
     }
 
@@ -209,38 +351,62 @@
   </header>
 
   <main class="page-wrap">
-    
-    <section class="hero-panel" style="background: linear-gradient(135deg, #ff3131 0%, #ff914d 100%); color: #ffffff;">
+    <section class="hero-panel">
       <div class="hero-copy">
-        <h1>Unwind, Pour a Drink & Get Creative</h1>
-        <p>A relaxed alternative to screen time. Designed for adults, friends, and couples to enjoy creative headspace, laughter, and tactile crafting alongside a favourite beverage.</p>
-        <a href="mailto:hello@frankieandhunter.co.uk?subject=Inquiry" class="btn-action">Enquire Now</a>
+        <span class="hero-kicker">Frankie &amp; Hunter Sip &amp; Craft</span>
+        <h1>Sip. Craft. Laugh. Repeat.</h1>
+        <p>A relaxed creative night in with your favourite people.</p>
+        <p>Pour a drink, open your craft kit and enjoy an evening of making, chatting and switching off.</p>
+        <p class="hero-final">No experience needed — just good company and a little creativity.</p>
       </div>
       <div class="hero-img-wrap">
-        <img src="assets/images/adult_crafting.png" alt="Unwind, Pour a Drink & Get Creative">
+        <img src="assets/images/adult_crafting.png" alt="Friends enjoying a relaxed Sip and Craft night">
       </div>
+      <a href="mailto:hello@frankieandhunter.co.uk?subject=Sip%20%26%20Craft%20Night" class="btn-action">Plan Your Sip &amp; Craft Night</a>
+    </section>
+
+    <section class="section-intro">
+      <h2>A lovely evening, made simple.</h2>
+      <p>Everything you need for a relaxed, creative get-together — without the pressure of needing to be artistic.</p>
     </section>
 
     <section class="content-grid">
-      
       <div class="info-card">
-        <h3>Grown-Up Projects</h3>
-        <p>Sophisticated terrazzo trinket dishes, botanical block printing, and custom soy candle pouring.</p>
+        <span class="eyebrow">Create</span>
+        <h3>Make Something Lovely</h3>
+        <p>Beautiful grown-up craft projects designed to be enjoyable, achievable and worth keeping.</p>
       </div>
       <div class="info-card">
-        <h3>Zero Experience Needed</h3>
-        <p>Stress-free kits with foolproof materials so you can chat and sip while creating freely.</p>
+        <span class="eyebrow">Relax</span>
+        <h3>No Experience Needed</h3>
+        <p>Everything you need is included, with simple guidance that lets you focus on having fun.</p>
       </div>
       <div class="info-card">
-        <h3>Curated Drink Pairings</h3>
-        <p>Includes mocktail and wine pairing suggestion cards tailored to the mood of the craft.</p>
+        <span class="eyebrow">Pour</span>
+        <h3>Something You Love</h3>
+        <p>Wine, cocktails, mocktails, tea — whatever makes your evening feel special.</p>
       </div>
       <div class="info-card">
-        <h3>Host Your Own Evening</h3>
-        <p>Bulk kits available to host 4 to 12 friends in the comfort of your living room.</p>
+        <span class="eyebrow">Share</span>
+        <h3>Better Together</h3>
+        <p>Perfect for friends, couples, birthdays, girls' nights or simply an excuse to get everyone together.</p>
       </div>
     </section>
 
+    <section class="host-panel">
+      <div class="host-copy">
+        <h2>Host Your Own Sip &amp; Craft Night</h2>
+        <p><strong>You bring the people. We’ll bring the creativity.</strong></p>
+        <p>Choose your craft, invite your favourite people and create your own Sip &amp; Craft evening at home.</p>
+        <p>Kits are available for small groups and include everything you need to get making.</p>
+      </div>
+      <a href="mailto:hello@frankieandhunter.co.uk?subject=Host%20a%20Sip%20%26%20Craft%20Night" class="btn-action">Build Your Night</a>
+    </section>
+
+    <section class="closing-line">
+      <p>Good drinks. Good company. Something beautiful to take home.</p>
+      <span>Made together. Made with love. Treasured forever.</span>
+    </section>
   </main>
 
   <footer>
