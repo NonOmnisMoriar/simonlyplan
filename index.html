@@ -89,129 +89,7 @@
       gap: 64px;
     }
 
-    /* Section 1: Offerings & Hero Grid */
-    .offerings-section {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 24px;
-    }
-
-    /* Left Hero Card */
-    .hero-manifesto {
-      background-color: var(--card-blue);
-      border-radius: var(--radius-lg);
-      position: relative;
-      padding: 36px 28px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-      min-height: 480px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    .hero-manifesto h2 {
-      font-size: 1.95rem;
-      line-height: 1.25;
-      font-weight: 700;
-      color: var(--text-black);
-      z-index: 2;
-      position: relative;
-    }
-
-    .hero-manifesto h2 span {
-      color: var(--card-gold);
-    }
-
-    .hero-ladybug {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      width: 80px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-woman {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 170px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* Visible offerings tiles */
-    .tiles-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .tile-card {
-      border-radius: var(--radius-md);
-      position: relative;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-      min-height: 230px;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .tile-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .tile-card .title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      line-height: 1.25;
-      z-index: 2;
-    }
-
-    .tile-card .artwork {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      max-height: 90px;
-      max-width: 65%;
-      object-fit: contain;
-      z-index: 1;
-    }
-
-    .add-btn {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-    }
-
-    .add-btn svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* Card Palettes */
-    .tile-lilac { background-color: var(--card-lilac); color: #000; }
-    .tile-gold { background-color: var(--card-gold); color: #000; }
-    .tile-orange { background-color: var(--card-orange); color: #000; }
-    .tile-ocean { background: linear-gradient(135deg, #5de0e6 0%, #004aad 100%); color: #d6e8f7; }
-    .tile-flame { background: linear-gradient(135deg, #ff3131 0%, #ff914d 100%); color: #000; }
-    .tile-sunset { background: linear-gradient(135deg, #ff66c4 0%, #ffde59 100%); color: #000; }
-
-    /* Section 2: Our Story (About) */
+    /* Our Story (About) */
     .story-section {
       background: #ffffff;
       border-radius: var(--radius-lg);
@@ -230,8 +108,11 @@
     }
 
     .story-text h2 {
-      font-size: 2.2rem;
+      font-family: "Fraunces", serif;
+      font-optical-sizing: auto;
+      font-size: 1.6rem;
       font-weight: 800;
+      font-variation-settings: "SOFT" 0, "WONK" 0;
       line-height: 1.3;
       margin-bottom: 24px;
       color: var(--text-black);
@@ -241,34 +122,10 @@
       font-size: 1.1rem;
       line-height: 1.8;
       color: #373d3b;
+      margin-bottom: 1em;
     }
 
     /* Section 3: Feature Banner */
-    .banner-section {
-      background-color: var(--card-blue);
-      border-radius: var(--radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 48px;
-      gap: 32px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    .banner-photo {
-      max-height: 340px;
-      max-width: 45%;
-      border-radius: var(--radius-md);
-      object-fit: cover;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .banner-animation {
-      max-height: 320px;
-      max-width: 45%;
-      object-fit: contain;
-    }
-
     /* Global Footer */
     footer {
       border-top: 1px solid rgba(55, 61, 59, 0.15);
@@ -291,12 +148,6 @@
 
     /* Responsiveness */
     @media (max-width: 960px) {
-      .offerings-section {
-        grid-template-columns: 1fr;
-      }
-      .tiles-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
       .story-section {
         grid-template-columns: 1fr;
         padding: 36px 24px;
@@ -304,19 +155,8 @@
       .story-img {
         max-height: 320px;
       }
-      .banner-section {
-        flex-direction: column;
-      }
-      .banner-photo, .banner-animation {
-        max-width: 90%;
-      }
     }
 
-    @media (max-width: 600px) {
-      .tiles-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -336,53 +176,21 @@
 
   <main class="main-wrap">
 
-    <!-- Section 1: Offerings & Hero Grid -->
-    <section class="offerings-section" id="offerings">
-      
-      <div class="hero-manifesto">
-        <img class="hero-ladybug" alt="Ladybug" src="assets/images/ladybug_cutout.png">
-        <img class="hero-woman" alt="Spring fashion adult" src="assets/images/woman_spring_thumb.png">
-        <h2>Here's what we believe in, and how we got here<span>.</span></h2>
-      </div>
-
-      <div class="tiles-grid">
-        
-        <!-- Sip & Craft -->
-        <a href="sip-and-craft.html" class="tile-card tile-flame">
-          <div class="add-btn" style="background:#caaacd; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Adult crafting" src="assets/images/adult_crafting.png">
-          <div class="title">sip and craft</div>
-        </a>
-
-        <!-- Events & Gatherings -->
-        <a href="events.html" class="tile-card tile-sunset">
-          <div class="add-btn" style="background:#ff914d; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Group unity hands sticker" src="assets/images/hands_unity_sticker.gif">
-          <div class="title">🎉 #Events<br>#Celebrations<br>#Gatherings</div>
-        </a>
-
-      </div>
-    </section>
-
     <!-- Section 2: Our Story (About) -->
     <section class="story-section" id="story">
       <img class="story-img" alt="Adult woman crafting" src="assets/images/woman_spring_portrait.png">
       <div class="story-text">
-        <h2>Here's what we believe in, and how we got here.</h2>
-        <p>
-          Crafting has always been a cherished part of my life, a passion that I eagerly shared with my children when they were young. In a world increasingly dominated by screens and social media, these creative moments became a sanctuary, a space where we could disconnect from the digital noise and connect with each other on a more personal level. Sitting together at the kitchen table, our hands busy with paper, glue, and paints, we made not just crafts, but memories that I hope they will carry with them forever. I wanted to show them that handmade gifts are more than just objects—they are expressions of love and thoughtfulness, treasures that hold a piece of the giver's heart[cite: 2]. This tradition extended to my grandchildren who now eagerly await sleepovers and parties at Granny's house[cite: 2]. These gatherings are filled with laughter, creativity, and the joy of being together, reminding us all of the simple yet profound value of making and sharing memories[cite: 2].
-        </p>
+        <h2>At FRANKIE &amp; HUNTER, we believe crafting is about so much more than the things we make.</h2>
+        <p>For me, it has always been about slowing down, being creative and spending meaningful time with the people I love.</p>
+        <p>When my children were young, the kitchen table became our creative space — filled with paper, paint, glue, imagination and plenty of laughter.</p>
+        <p>We made crafts, but more importantly, we made memories.</p>
+        <p>I wanted them to know that something handmade carries a little piece of the person who made it — a simple way of saying <em>I thought of you</em> or <em>you matter to me</em>.</p>
+        <p>Today, that tradition continues with my grandchildren, with creative sleepovers, parties and usually a little bit of mess.</p>
+        <p>That feeling is at the heart of Frankie &amp; Hunter.</p>
+        <p>We want to make crafting welcoming, inspiring and enjoyable, whether you're an experienced maker or just discovering the joy of creating something yourself.</p>
+        <p>We hope you'll find something here that inspires you to create, give with love and make wonderful memories along the way.</p>
+        <p>Most of all, we're looking forward to getting to know you, discovering what you love to make and becoming a little part of your creative story.</p>
       </div>
-    </section>
-
-    <!-- Section 3: Feature Spotlight Banner -->
-    <section class="banner-section">
-      <img class="banner-photo" alt="Frankie &amp; Hunter Branding" src="assets/images/branding_large_photo.jpg">
-      <img class="banner-animation" alt="Festive box with balloons" src="assets/images/festive_box_balloons.gif">
     </section>
 
   </main>
