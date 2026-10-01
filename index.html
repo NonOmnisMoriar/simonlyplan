@@ -58,6 +58,22 @@
       text-decoration: none;
     }
 
+    .brand-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .brand-tagline {
+      font-family: "Fraunces", serif;
+      font-optical-sizing: auto;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-variation-settings: "SOFT" 0, "WONK" 0;
+      line-height: 1.2;
+      color: var(--text-dark);
+    }
+
     .nav-links {
       display: flex;
       gap: 10px;
@@ -105,6 +121,7 @@
       width: 100%;
       max-height: 480px;
       object-fit: contain;
+      align-self: start;
     }
 
     .story-text h2 {
@@ -163,7 +180,10 @@
 
   <!-- Navigation Bar -->
   <header class="site-nav">
-    <a href="index.html" class="brand-logo">FRANKIE &amp; HUNTER</a>
+    <div class="brand-lockup">
+      <a href="index.html" class="brand-logo">FRANKIE &amp; HUNTER</a>
+      <span class="brand-tagline">Made with love, treasured forever</span>
+    </div>
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -181,7 +201,7 @@
       <img class="story-img" alt="Adult woman crafting" src="assets/images/woman_spring_portrait.png">
       <div class="story-text">
         <h2>At FRANKIE &amp; HUNTER, we believe crafting is about so much more than the things we make.</h2>
-        <p>For me, it has always been about slowing down, being creative and spending meaningful time with the people I love.</p>
+        <p><strong>For me, it has always been about slowing down, being creative and spending meaningful time with the people I love.</strong></p>
         <p>When my children were young, the kitchen table became our creative space — filled with paper, paint, glue, imagination and plenty of laughter.</p>
         <p>We made crafts, but more importantly, we made memories.</p>
         <p>I wanted them to know that something handmade carries a little piece of the person who made it — a simple way of saying <em>I thought of you</em> or <em>you matter to me</em>.</p>
