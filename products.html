@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0,0&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <style>
     :root {
       --bg-cream: #fdf3dd;
@@ -92,37 +93,6 @@
       background-color: rgba(55, 61, 59, 0.08);
     }
 
-    .bag-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-dark);
-      text-decoration: none;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #ffffff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-    }
-
-    .bag-link svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .bag-count {
-      min-width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: var(--card-orange);
-      color: #ffffff;
-      font-size: 0.78rem;
-      line-height: 1;
-    }
-
     .page-wrap {
       max-width: 1200px;
       margin: 0 auto;
@@ -153,6 +123,12 @@
       max-width: 710px;
       font-size: 1.1rem;
       color: var(--text-dark);
+    }
+
+    .stripe-purchase {
+      display: flex;
+      justify-content: center;
+      padding: 36px 20px;
     }
 
     .toolbar {
@@ -526,15 +502,6 @@
           <li><a href="events.html">Events</a></li>
         </ul>
       </nav>
-      <a href="#product-grid" class="bag-link" aria-label="Shopping bag">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-          <path d="M3 6h18"></path>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span>Bag</span>
-        <span class="bag-count" id="bag-count">0</span>
-      </a>
     </div>
   </header>
 
@@ -546,32 +513,14 @@
       </div>
     </section>
 
-    <section class="toolbar" aria-label="Product controls">
-      <div class="toolbar-top">
-        <label class="search-box" for="product-search">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.3-4.3"></path>
-          </svg>
-          <input id="product-search" type="search" placeholder="Search products, tags, or descriptions" autocomplete="off">
-        </label>
-        <label for="sort-select">
-          <select id="sort-select">
-            <option value="featured">Featured / Default</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="rating-desc">Highest Rated</option>
-          </select>
-        </label>
-        <div class="result-count" id="result-count" aria-live="polite">Showing 0 products</div>
-      </div>
-      <div class="category-pills" id="category-pills" aria-label="Filter by category"></div>
+    <section class="stripe-purchase" aria-label="Purchase">
+      <stripe-buy-button
+        buy-button-id="buy_btn_1ULmPP2XF7Bhs3Fh5BqakVmu"
+        publishable-key="pk_test_51UKj2d2XF7Bhs3FhCaEyVJZxYQQSHkRlLXXC5AIhsb9QTMHo4O9RhAobOQWY3JtV22lxOvklHFlTIQn6RR62zGlS00RUUAtEXC"
+      >
+      </stripe-buy-button>
     </section>
-
-    <section id="product-grid" aria-live="polite"></section>
   </main>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <footer>
     <p>&copy; 2026 Frankie &amp; Hunter. Handcrafted memories and creative sanctuaries.</p>
@@ -583,169 +532,5 @@
     </p>
   </footer>
 
-  <script>
-    const categories = [
-      'All',
-      'Party Favors & Minis',
-      'Collectibles & Charms',
-      'Fidget & Sensory',
-      'Creative Play',
-      'Sensory & Calming',
-      'Active & Novelty',
-      'Keyrings & Travel',
-      'Classic Toys'
-    ];
-
-    const state = {
-      products: [],
-      category: 'All',
-      search: '',
-      sort: 'featured',
-      bagCount: 0,
-      toastTimer: null
-    };
-
-    const grid = document.getElementById('product-grid');
-    const searchInput = document.getElementById('product-search');
-    const sortSelect = document.getElementById('sort-select');
-    const countEl = document.getElementById('result-count');
-    const bagCountEl = document.getElementById('bag-count');
-    const toast = document.getElementById('toast');
-    const categoryPills = document.getElementById('category-pills');
-
-    const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640'%3E%3Crect width='640' height='640' fill='%23d6e8f7'/%3E%3Ccircle cx='460' cy='170' r='72' fill='%23fdf3dd'/%3E%3Cpath d='M90 495c55-104 113-156 174-156 42 0 79 25 111 76 34-37 70-56 108-56 37 0 71 24 102 72v64H90Z' fill='%23caaacd'/%3E%3Ctext x='320' y='558' text-anchor='middle' font-family='Arial, sans-serif' font-size='28' font-weight='700' fill='%23373d3b'%3EImage coming soon%3C/text%3E%3C/svg%3E";
-
-    function money(product) {
-      return `${product.symbol}${product.price.toFixed(2)}`;
-    }
-
-    function matchesProduct(product) {
-      const term = state.search.trim().toLowerCase();
-      const inCategory = state.category === 'All' || product.category === state.category;
-      if (!term) return inCategory;
-
-      const haystack = [
-        product.name,
-        product.shortDescription,
-        ...product.tags
-      ].join(' ').toLowerCase();
-
-      return inCategory && haystack.includes(term);
-    }
-
-    function sortedProducts(products) {
-      const output = [...products];
-      if (state.sort === 'price-asc') {
-        output.sort((a, b) => a.price - b.price);
-      } else if (state.sort === 'price-desc') {
-        output.sort((a, b) => b.price - a.price);
-      } else if (state.sort === 'rating-desc') {
-        output.sort((a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount);
-      }
-      return output;
-    }
-
-    function renderCategoryPills() {
-      categoryPills.innerHTML = categories.map((category) => `
-        <button class="filter-pill${category === state.category ? ' active' : ''}" type="button" data-category="${category}">
-          ${category}
-        </button>
-      `).join('');
-    }
-
-    function renderProducts() {
-      const visible = sortedProducts(state.products.filter(matchesProduct));
-      countEl.textContent = `Showing ${visible.length} ${visible.length === 1 ? 'product' : 'products'}`;
-
-      if (!visible.length) {
-        grid.innerHTML = '<div class="empty-state">No products match those filters yet.</div>';
-        return;
-      }
-
-      grid.innerHTML = visible.map((product) => `
-        <article class="product-card">
-          <div class="image-wrap">
-            <img src="${product.heroImage}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';">
-            <span class="category-badge">${product.category}</span>
-          </div>
-          <div class="card-body">
-            <span class="stock-badge">${product.inStock ? 'In Stock' : 'Out of Stock'}</span>
-            <div class="rating-row">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span>${product.rating.toFixed(1)} (${product.reviewCount})</span>
-            </div>
-            <h3>${product.name}</h3>
-            <p>${product.shortDescription}</p>
-            <div class="tag-row">
-              ${product.tags.map((tag) => `<span class="tag-chip">#${tag}</span>`).join('')}
-            </div>
-            <div class="card-bottom">
-              <div class="price">${money(product)}</div>
-              <button class="add-to-bag" type="button" data-product-id="${product.id}">Add to Bag</button>
-            </div>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function updateView() {
-      renderCategoryPills();
-      renderProducts();
-    }
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      window.clearTimeout(state.toastTimer);
-      state.toastTimer = window.setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2500);
-    }
-
-    categoryPills.addEventListener('click', (event) => {
-      const button = event.target.closest('[data-category]');
-      if (!button) return;
-      state.category = button.dataset.category;
-      updateView();
-    });
-
-    searchInput.addEventListener('input', (event) => {
-      state.search = event.target.value;
-      renderProducts();
-    });
-
-    sortSelect.addEventListener('change', (event) => {
-      state.sort = event.target.value;
-      renderProducts();
-    });
-
-    grid.addEventListener('click', (event) => {
-      const button = event.target.closest('[data-product-id]');
-      if (!button) return;
-      const product = state.products.find((item) => item.id === button.dataset.productId);
-      if (!product) return;
-      state.bagCount += 1;
-      bagCountEl.textContent = state.bagCount;
-      showToast(`Added ${product.name} to your bag!`);
-    });
-
-    fetch('assets/data/products.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Product data request failed: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((products) => {
-        state.products = products;
-        updateView();
-      })
-      .catch((error) => {
-        console.error(error);
-        grid.innerHTML = '<div class="empty-state">Product data could not be loaded. Please view this page through a local HTTP server or hosted site.</div>';
-        countEl.textContent = 'Showing 0 products';
-        renderCategoryPills();
-      });
-  </script>
 </body>
 </html>
