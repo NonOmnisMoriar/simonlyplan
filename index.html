@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frankie &amp; Hunter | Handcrafted Memories</title>
+  <title>FRANKIE &amp; HUNTER | Handcrafted Memories</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0,0&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-cream: #fdf3dd;
@@ -46,8 +46,12 @@
     }
 
     .brand-logo {
+      font-family: "Fraunces", serif;
+      font-optical-sizing: auto;
       font-size: 1.6rem;
       font-weight: 800;
+      font-style: normal;
+      font-variation-settings: "SOFT" 0, "WONK" 0;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-dark);
@@ -137,11 +141,10 @@
       pointer-events: none;
     }
 
-    /* 6 Offerings Tiles Grid */
+    /* Visible offerings tiles */
     .tiles-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
@@ -320,16 +323,11 @@
 
   <!-- Navigation Bar -->
   <header class="site-nav">
-    <a href="index.html" class="brand-logo">Frankie &amp; Hunter</a>
+    <a href="index.html" class="brand-logo">FRANKIE &amp; HUNTER</a>
     <nav>
       <ul class="nav-links">
-        <li><a href="#offerings">Offerings</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Shop</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="subscription.html">Subscriptions</a></li>
-        <li><a href="build-a-box.html">Build a Box</a></li>
-        <li><a href="mystery-box.html">Mystery</a></li>
-        <li><a href="seasonal.html">Seasonal</a></li>
         <li><a href="sip-and-craft.html">Sip &amp; Craft</a></li>
         <li><a href="events.html">Events</a></li>
       </ul>
@@ -349,43 +347,7 @@
 
       <div class="tiles-grid">
         
-        <!-- 1. Subscription -->
-        <a href="subscription.html" class="tile-card tile-lilac">
-          <div class="add-btn" style="background:#fdf3dd; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Ladybug" src="assets/images/ladybug_cutout.png">
-          <div class="title">yearly<br>subscription</div>
-        </a>
-
-        <!-- 2. Build Your Own Box -->
-        <a href="build-a-box.html" class="tile-card tile-gold">
-          <div class="add-btn" style="background:#fff4cc; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Balloons" src="assets/images/prom_balloons.png">
-          <div class="title">build your own<br>box</div>
-        </a>
-
-        <!-- 3. Mystery Box -->
-        <a href="mystery-box.html" class="tile-card tile-orange">
-          <div class="add-btn" style="background:#d6e8f7; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Festive mystery box" src="assets/images/festive_box_balloons.gif">
-          <div class="title">Mystery box! 🎁<br>📦 #Mystery #Box</div>
-        </a>
-
-        <!-- 4. Seasonal Celebrations -->
-        <a href="seasonal.html" class="tile-card tile-ocean">
-          <div class="add-btn" style="background:#d6e8f7; color:#222;">
-            <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
-          </div>
-          <img class="artwork" alt="Seasons tree" src="assets/images/tree_four_seasons.png">
-          <div class="title">seasonal<br>celebrations</div>
-        </a>
-
-        <!-- 5. Sip & Craft -->
+        <!-- Sip & Craft -->
         <a href="sip-and-craft.html" class="tile-card tile-flame">
           <div class="add-btn" style="background:#caaacd; color:#222;">
             <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
@@ -394,7 +356,7 @@
           <div class="title">sip and craft</div>
         </a>
 
-        <!-- 6. Events & Gatherings -->
+        <!-- Events & Gatherings -->
         <a href="events.html" class="tile-card tile-sunset">
           <div class="add-btn" style="background:#ff914d; color:#222;">
             <svg fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.75.75 0 0 1 .75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3A.75.75 0 0 1 8 3.5z"/></svg>
@@ -431,10 +393,6 @@
     <p style="margin-top: 8px;">
       <a href="index.html">Home</a> | 
       <a href="products.html">Shop</a> | 
-      <a href="subscription.html">Subscriptions</a> | 
-      <a href="build-a-box.html">Custom Boxes</a> | 
-      <a href="mystery-box.html">Mystery</a> | 
-      <a href="seasonal.html">Seasonal</a> | 
       <a href="sip-and-craft.html">Sip &amp; Craft</a> | 
       <a href="events.html">Events</a>
     </p>
